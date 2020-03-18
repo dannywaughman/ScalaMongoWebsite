@@ -6,7 +6,6 @@ POST        /login                       controllers.LoginController.loginSubmit
 GET         /signup                      controllers.SignUpController.signUp
 POST        /signup                      controllers.SignUpController.signUpSubmit
 
-
 GET         /createperson                controllers.ApplicationUsingJsonReadersWriters.create
 
 POST        /createFromJson              controllers.ApplicationUsingJsonReadersWriters.createFromJson
