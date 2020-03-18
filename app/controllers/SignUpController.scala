@@ -13,9 +13,14 @@ class SignUpController @Inject()(cc: ControllerComponents) extends AbstractContr
   def signUpSubmit(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     SignUpDetails.signUpForm.bindFromRequest.fold({ formWithErrors =>
       BadRequest(views.html.signup(formWithErrors))
-    }, {signUpDetails =>
-      SignUpDetails.addUser(signUpDetails)
+    }, { signUpDetails =>
+      if (SignUpDetails.checkIfUserAlreadyExists(signUpDetails)) {
+        Redirect(routes.HomeController.index()).withSession(request.session + ("username" -> signUpDetails.username))
+      }
+      else {
+        SignUpDetails.addUser(signUpDetails)
       Redirect(routes.HomeController.index()).withSession(request.session + ("username" -> signUpDetails.username))
+    }
     })
   }
 

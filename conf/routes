@@ -7,7 +7,6 @@ GET         /signup                      controllers.SignUpController.signUp
 POST        /signup                      controllers.SignUpController.signUpSubmit
 
 GET         /createperson                controllers.ApplicationUsingJsonReadersWriters.create
-
 POST        /createFromJson              controllers.ApplicationUsingJsonReadersWriters.createFromJson
 
 GET         /findByName/:lastName        controllers.ApplicationUsingJsonReadersWriters.findByName(lastName: String)
